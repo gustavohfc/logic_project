@@ -2401,9 +2401,11 @@
     (number nonempty-type-decl nil numbers nil)
     (below type-eq-decl nil nat_types nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (permutations const-decl "bool" sorting_seq nil)
     (real_le_is_total_order name-judgement "(total_order?[real])"
      real_props nil)
-    (permutations const-decl "bool" sorting_seq nil)
     (binsertionsort const-decl
      "{w: finite_sequence[nat] | length(w) = length(v)}" binsertionsort
      nil))
@@ -2453,25 +2455,63 @@
    shostak))
  (binsertion_sorts 0
   (binsertion_sorts-2 nil 3716507867
-   ("" (skeep) (("" (postpone) nil nil)) nil)
+   ("" (skeep)
+    (("" (expand "binsertionsort")
+      (("" (lemma "bs_aux_sorts")
+        (("" (prop)
+          (("1" (grind) nil nil)
+           ("2" (inst -1 "v" "1")
+            (("2" (prop)
+              (("2" (assert)
+                (("2" (expand sorted 1)
+                  (("2" (prop)
+                    (("2" (expand "psorted")
+                      (("2" (prop)
+                        (("2" (hide 1 2)
+                          (("2" (skeep)
+                            (("2" (typepred "k")
+                              (("2"
+                                (hide -1 1 3)
+                                (("2"
+                                  (expand ^)
+                                  (("2" (grind) nil nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil))
+    nil)
    ((binsertionsort const-decl
      "{w: finite_sequence[nat] | length(w) = length(v)}" binsertionsort
      nil)
-    (bs_aux_sorts formula-decl nil binsertionsort nil)
+    (real_le_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (int_minus_int_is_int application-judgement "int" integers nil)
+    (sorted const-decl "bool" sorting_seq nil)
+    (psorted const-decl "bool" sorting_seq nil)
+    (finseq_appl const-decl "[below[length(fs)] -> T]" finite_sequences
+     nil)
     (posint_plus_nnint_is_posint application-judgement "posint"
      integers nil)
-    (real_ge_is_total_order name-judgement "(total_order?[real])"
-     real_props nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (finseq type-eq-decl nil finite_sequences nil)
+    (^ const-decl "finseq" finite_sequences nil)
+    (nat_min application-judgement "{k: nat | k <= i AND k <= j}"
+     real_defs nil)
     (real_gt_is_strict_total_order name-judgement
      "(strict_total_order?[real])" real_props nil)
-    (int_min application-judgement "{k: int | k <= i AND k <= j}"
-     real_defs nil)
-    (odd_minus_odd_is_even application-judgement "even_int" integers
-     nil)
-    (empty_seq const-decl "finseq" finite_sequences nil)
     (min const-decl "{p: real | p <= m AND p <= n}" real_defs nil)
-    (^ const-decl "finseq" finite_sequences nil)
-    (finseq_appl const-decl "[below[length(fs)] -> T]" finite_sequences
+    (odd_minus_odd_is_even application-judgement "even_int" integers
      nil)
     (> const-decl "bool" reals nil) (< const-decl "bool" reals nil)
     (finite_sequence type-eq-decl nil finite_sequences nil)
@@ -2490,10 +2530,7 @@
     (number nonempty-type-decl nil numbers nil)
     (below type-eq-decl nil nat_types nil)
     (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (sorted const-decl "bool" sorting_seq nil)
-    (psorted const-decl "bool" sorting_seq nil)
-    (real_le_is_total_order name-judgement "(total_order?[real])"
-     real_props nil))
+    (bs_aux_sorts formula-decl nil binsertionsort nil))
    nil)
   (binsertion_sorts-1 nil 3716415298
    ("" (skeep)
